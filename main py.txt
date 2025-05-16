@@ -1,0 +1,39 @@
+from telegram import Update
+from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
+
+TOKEN = 7409665872:AAFStMEccrNgttkWKdbn0dAb5fpXWyJz9Lc
+
+EGIS_INTRO = """
+مرحباً بك في بوت إيجريس، رفيقك القوي والغامض من عالم Solo Leveling.
+استخدم الأوامر التالية:
+/start - بداية المحادثة
+/xo - لعبة إكس أو
+/mariam - لعبة مريم
+/akinator - لعبة المارد الأزرق
+"""
+
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text(EGIS_INTRO)
+
+async def xo_game(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text("اللعبة تحت التطوير، ترقب القادم...")
+
+async def mariam_game(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text("اللعبة تحت التطوير، ترقب القادم...")
+
+async def akinator_game(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text("اللعبة تحت التطوير، ترقب القادم...")
+
+def main():
+    app = ApplicationBuilder().token(TOKEN).build()
+
+    app.add_handler(CommandHandler("start", start))
+    app.add_handler(CommandHandler("xo", xo_game))
+    app.add_handler(CommandHandler("mariam", mariam_game))
+    app.add_handler(CommandHandler("akinator", akinator_game))
+
+    print("البوت شغال...")
+    app.run_polling()
+
+if __name__ == "__main__":
+    main()
